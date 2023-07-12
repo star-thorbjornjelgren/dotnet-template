@@ -1,20 +1,10 @@
-﻿namespace ControllerService.Weather
-{
-    public class CurrentWeatherModel
-    {
-        public CurrentWeatherModel(string city, string country, double tempC, string? text, string? icon)
-        {
-            City = city;
-            Country = country;
-            TempC = tempC;
-            Text = text;
-            Icon = icon;
-        }
+﻿namespace ControllerService.Weather;
 
-        public string City { get; }
-        public string Country { get; }
-        public double TempC { get; }
-        public string? Text { get; }
-        public string? Icon { get; }
-    }
+public class CurrentWeatherModel
+{
+    public required string City { get; init; }
+    public required string Country { get; init; }
+    public required double TempC { get; init; }
+    public required string? Text { get; init; }
+    public required string? Icon { get; init; }
 }

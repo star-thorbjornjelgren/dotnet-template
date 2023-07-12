@@ -2,49 +2,25 @@
 {
     public class WeatherForecastModel
     {
-        public WeatherForecastModel(string city, string country, List<DayModel> days)
-        {
-            City = city;
-            Country = country;
-            Days = days;
-        }
-
-        public string City { get; }
-        public string Country { get; }
-        public List<DayModel> Days { get; }
+        public required string City { get; init; }
+        public required string Country { get; init; }
+        public required List<DayModel> Days { get; init; }
 
         public class DayModel
         {
-            public DayModel(DateTime date, double maxtempC, double mintempC, double avgtempC, double maxwindKph, double totalprecipMm, double totalsnowCm, double avghumidity, int dailyChanceOfRain, int dailyChanceOfSnow, string? text, string? icon, double uv)
-            {
-                Date = date;
-                MaxtempC = maxtempC;
-                MintempC = mintempC;
-                AvgtempC = avgtempC;
-                MaxwindKph = maxwindKph;
-                TotalprecipMm = totalprecipMm;
-                TotalsnowCm = totalsnowCm;
-                Avghumidity = avghumidity;
-                DailyChanceOfRain = dailyChanceOfRain;
-                DailyChanceOfSnow = dailyChanceOfSnow;
-                Text = text;
-                Icon = icon;
-                Uv = uv;
-            }
-
-            public DateTime Date { get; }
-            public double MaxtempC { get; }
-            public double MintempC { get; }
-            public double AvgtempC { get; }
-            public double MaxwindKph { get; }
-            public double TotalprecipMm { get; }
-            public double TotalsnowCm { get; }
-            public double Avghumidity { get; }
-            public int DailyChanceOfRain { get; }
-            public int DailyChanceOfSnow { get; }
-            public string? Text { get; }
-            public string? Icon { get; }
-            public double Uv { get; }
+            public required DateTime Date { get; init; }
+            public required double MaxtempC { get; init; }
+            public required double MintempC { get; init; }
+            public required double AvgtempC { get; init; }
+            public required double MaxwindKph { get; init; }
+            public required double TotalprecipMm { get; init; }
+            public required double TotalsnowCm { get; init; }
+            public required double Avghumidity { get; init; }
+            public required int DailyChanceOfRain { get; init; }
+            public required int DailyChanceOfSnow { get; init; }
+            public required string? Text { get; init; }
+            public required string? Icon { get; init; }
+            public required double Uv { get; init; }
         }
     }
 }
