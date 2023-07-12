@@ -2,5 +2,5 @@
 
 public interface IWeatherForecastGateway
 {
-    Task<WeatherForecastResponse> GetAsync(WeatherForecastRequest weatherForecastRequest);
+    Task<WeatherForecastResponse?> GetAsync(WeatherForecastRequest weatherForecastRequest);
 }

@@ -1,4 +1,5 @@
-﻿using ServiceGateway.Weather;
+﻿using ControllerService.Exceptions;
+using ServiceGateway.Weather;
 
 namespace ControllerService.Weather;
 
@@ -14,8 +15,24 @@ public class WeatherForecastService : IWeatherForecastService
 
     public async Task<WeatherForecastModel> GetWeatherForecastAsync(string city, int daysAhead)
     {
-        var result = await weatherForecast.GetAsync(new WeatherForecastRequest { City = city, DaysAhead = daysAhead });
-        return MapToWeatherForecastModel(result);
+        try
+        {
+            var result = await weatherForecast.GetAsync(new WeatherForecastRequest { City = city, DaysAhead = daysAhead });
+
+            if (result == null)
+            {
+                throw new DataNotFoundException("Failed to get weather forecast. No results were found");
+            }
+
+            return MapToWeatherForecastModel(result);
+        }
+        catch(DataNotFoundException)
+        {
+            throw;
+        }
+        catch (Exception ex) {
+            throw new WeatherForecastException("Error getting weather forecast", ex);
+        }
     }
 
     private WeatherForecastModel MapToWeatherForecastModel(WeatherForecastResponse weatherForecastResponse) =>

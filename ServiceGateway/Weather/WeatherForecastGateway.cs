@@ -14,23 +14,19 @@ public class WeatherForecastGateway : IWeatherForecastGateway
     private readonly HttpClient httpClient;
     private readonly string apiKey;
 
-    public async Task<WeatherForecastResponse> GetAsync(WeatherForecastRequest weatherForecastRequest)
+    public async Task<WeatherForecastResponse?> GetAsync(WeatherForecastRequest weatherForecastRequest)
     {
-        var apiUrl = $"forecast.json?key={apiKey}&q={weatherForecastRequest.City}&days={weatherForecastRequest.DaysAhead}&aqi=no&alerts=no";
+        var apiUrl = $"forecast.json?key={apiKey}&q={weatherForecastRequest.City}&days={weatherForecastRequest.DaysAhead}&aqi={weatherForecastRequest.AirQualityData}&alerts={weatherForecastRequest.Alerts}";
+
         var response = await httpClient.GetAsync(apiUrl);
 
-        if (response.IsSuccessStatusCode)
+        if (!response.IsSuccessStatusCode)
         {
-            var jsonString = await response.Content.ReadAsStringAsync();
-
-            var result = JsonSerializer.Deserialize<WeatherForecastResponse>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-            if (result == null)
-                throw new Exception($"Status Ok but no data was retrieved");
-
-            return result;
+            throw new HttpRequestException($"Failed to retrieve weather data. Status code: {response.StatusCode}", null, response.StatusCode);
         }
-        
-        throw new Exception($"Failed to retrieve weather data. Status code: {response.StatusCode}");
+
+        var jsonString = await response.Content.ReadAsStringAsync();
+
+        return JsonSerializer.Deserialize<WeatherForecastResponse>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
     }
 }

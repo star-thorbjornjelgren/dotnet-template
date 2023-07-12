@@ -1,3 +1,4 @@
+using ControllerService.Exceptions;
 using ControllerService.Weather;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,8 +18,24 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("GetWeatherForecast")]
-    public async Task<WeatherForecastModel> GetWeatherForecast([FromQuery] string city, [FromQuery] int daysAhead)
+    public async Task<WeatherForecastModel?> GetWeatherForecast([FromQuery] string city, [FromQuery] int daysAhead)
     {
-        return await weatherForecastService.GetWeatherForecastAsync(city, daysAhead);
+        try
+        {
+            var result = await weatherForecastService.GetWeatherForecastAsync(city, daysAhead);
+
+            Response.StatusCode = StatusCodes.Status200OK;
+
+            return result;
+        }
+        catch (DataNotFoundException) {
+            Response.StatusCode = StatusCodes.Status404NotFound;
+            return null;
+        }
+        catch (WeatherForecastException ex) {
+            logger.LogError("Error when gettings weather forecast", ex);
+            Response.StatusCode = StatusCodes.Status500InternalServerError;
+            return null;
+        }
     }
 }
