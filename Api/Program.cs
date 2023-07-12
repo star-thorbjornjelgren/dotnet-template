@@ -11,9 +11,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
-ControllerService.Setup.SetupDependencyInjection(builder.Services,
-    new ControllerService.Configuration.WeatherConfig(builder.Configuration["Weather:Url"]!, builder.Configuration["Weather:ApiKey"]!)
-    );
+// Setup dependency injection for underlying projects
+dynamic weatherSettings = new System.Dynamic.ExpandoObject();
+weatherSettings.Url = builder.Configuration["Weather:Url"];
+weatherSettings.ApiKey = builder.Configuration["Weather:ApiKey"];
+
+ControllerService.Setup.SetupDependencyInjection(builder.Services, weatherSettings);
+
 
 var app = builder.Build();
 

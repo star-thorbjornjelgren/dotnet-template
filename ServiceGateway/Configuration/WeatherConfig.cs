@@ -1,4 +1,4 @@
-﻿namespace ControllerService.Configuration;
+﻿namespace ServiceGateway.Configuration;
 
 public class WeatherConfig
 {

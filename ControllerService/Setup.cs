@@ -1,20 +1,12 @@
-﻿using ControllerService.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using ServiceGateway.CurrentWeather;
-using ServiceGateway.Weather;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ServiceGateway.Configuration;
 
 namespace ControllerService;
 
 public static class Setup
 {
-    public static void SetupDependencyInjection(IServiceCollection services, WeatherConfig weatherConfig)
+    public static void SetupDependencyInjection(IServiceCollection services, dynamic weatherConfig)
     {
-        services.AddSingleton<IWeatherForecastGateway>(new WeatherForecastGateway(
-            new HttpClient
-            {
-                BaseAddress = new Uri(weatherConfig.Url)
-            },
-            weatherConfig.ApiKey
-            ));
+        ServiceGateway.Setup.SetupDependencyInjection(services, new WeatherConfig(weatherConfig.Url, weatherConfig.ApiKey));
     }
 }

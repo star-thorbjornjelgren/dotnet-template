@@ -19,7 +19,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet("GetCurrentWeather/{city}")]
     public async Task<CurrentWeatherModel> GetCurrentWeather(string city)
     {
-        return await weatherForecastService.GetCurrentWeatherAsync(city);
+        return await weatherForecastService.GetCurrentWeatherAsync(city); //Todo: wrap in DTO (BffResponse)
     }
 
     [HttpGet("GetWeatherForecast")]
