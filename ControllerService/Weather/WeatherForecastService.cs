@@ -12,26 +12,11 @@ public class WeatherForecastService : IWeatherForecastService
         this.weatherForecast = weatherForecast;
     }
 
-    public async Task<CurrentWeatherModel> GetCurrentWeatherAsync(string city)
-    {
-        var result = await weatherForecast.GetAsync(new WeatherForecastRequest { City = city, DaysAhead = 1 });
-        return MapToCurrentWeatherModel(result);
-    }
-
     public async Task<WeatherForecastModel> GetWeatherForecastAsync(string city, int daysAhead)
     {
         var result = await weatherForecast.GetAsync(new WeatherForecastRequest { City = city, DaysAhead = daysAhead });
         return MapToWeatherForecastModel(result);
     }
-
-    private CurrentWeatherModel MapToCurrentWeatherModel(WeatherForecastResponse weatherForecastResponse) => 
-        new CurrentWeatherModel {
-            City = weatherForecastResponse.Location.Name,
-            Country = weatherForecastResponse.Location.Country,
-            TempC = weatherForecastResponse.Current.TempC,
-            Text = weatherForecastResponse.Current.Condition.Text,
-            Icon = weatherForecastResponse.Current.Condition.Icon
-            };
 
     private WeatherForecastModel MapToWeatherForecastModel(WeatherForecastResponse weatherForecastResponse) =>
         new WeatherForecastModel

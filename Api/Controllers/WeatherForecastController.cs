@@ -16,12 +16,6 @@ public class WeatherForecastController : ControllerBase
         this.weatherForecastService = weatherForecastService;
     }
 
-    [HttpGet("GetCurrentWeather/{city}")]
-    public async Task<CurrentWeatherModel> GetCurrentWeather(string city)
-    {
-        return await weatherForecastService.GetCurrentWeatherAsync(city); //Todo: wrap in DTO (BffResponse)
-    }
-
     [HttpGet("GetWeatherForecast")]
     public async Task<WeatherForecastModel> GetWeatherForecast([FromQuery] string city, [FromQuery] int daysAhead)
     {
