@@ -10,7 +10,7 @@ public class WeatherForecastServiceTests
 {
     WeatherForecastService sut;
     Mock<IWeatherForecastGateway> WeatherForecastGatewayMock;
-    Moq.Language.Flow.ISetup<IWeatherForecastGateway, Task<WeatherForecastResponse?>> setupMockGetWeatherForecastAsync;
+    Moq.Language.Flow.ISetup<IWeatherForecastGateway, Task<WeatherForecastResponse?>> setupMockGetAsync;
 
     Fixture fixture;
 
@@ -18,7 +18,7 @@ public class WeatherForecastServiceTests
     public void Setup()
     {
         WeatherForecastGatewayMock = new Mock<IWeatherForecastGateway>();
-        setupMockGetWeatherForecastAsync = WeatherForecastGatewayMock.Setup(x => x.GetAsync(It.IsAny<WeatherForecastRequest>()));
+        setupMockGetAsync = WeatherForecastGatewayMock.Setup(x => x.GetAsync(It.IsAny<WeatherForecastRequest>()));
 
         fixture = new Fixture();
 
@@ -47,7 +47,7 @@ public class WeatherForecastServiceTests
             .With(x => x.Forecast, forecastResponse)
             .Create();
 
-        setupMockGetWeatherForecastAsync
+        setupMockGetAsync
             .ReturnsAsync(gatewayResponse)
             .Verifiable();
 

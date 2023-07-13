@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ServiceGateway.Configuration;
-using ServiceGateway.CurrentWeather;
 using ServiceGateway.Weather;
 
 namespace ServiceGateway;

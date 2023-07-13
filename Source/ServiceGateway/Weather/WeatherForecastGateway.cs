@@ -1,7 +1,6 @@
-﻿using ServiceGateway.Weather;
-using System.Text.Json;
+﻿using System.Text.Json;
 
-namespace ServiceGateway.CurrentWeather;
+namespace ServiceGateway.Weather;
 
 public class WeatherForecastGateway : IWeatherForecastGateway
 {
