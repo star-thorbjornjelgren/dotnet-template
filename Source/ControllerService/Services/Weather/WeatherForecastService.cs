@@ -1,7 +1,11 @@
-﻿using ControllerService.Exceptions;
-using ServiceGateway.Weather;
+﻿using ControllerService.Exceptions.Common;
+using ControllerService.Exceptions.Weather;
+using ControllerService.Interfaces.Weather;
+using ControllerService.Models.Weather;
+using ServiceGateway.Dtos.Weather;
+using ServiceGateway.Interfaces.Weather;
 
-namespace ControllerService.Weather;
+namespace ControllerService.Services.Weather;
 
 
 public class WeatherForecastService : IWeatherForecastService
@@ -26,11 +30,12 @@ public class WeatherForecastService : IWeatherForecastService
 
             return MapToWeatherForecastModel(result);
         }
-        catch(DataNotFoundException)
+        catch (DataNotFoundException)
         {
             throw;
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             throw new WeatherForecastException("Error getting weather forecast", ex);
         }
     }
@@ -40,7 +45,8 @@ public class WeatherForecastService : IWeatherForecastService
         {
             City = weatherForecastResponse.Location.Name,
             Country = weatherForecastResponse.Location.Country,
-            Days = weatherForecastResponse.Forecast.Forecastday.Select(x => new WeatherForecastModel.DayModel {
+            Days = weatherForecastResponse.Forecast.Forecastday.Select(x => new WeatherForecastModel.DayModel
+            {
                 Date = x.Date,
                 MaxtempC = x.Day.MaxtempC,
                 MintempC = x.Day.MintempC,
@@ -54,6 +60,6 @@ public class WeatherForecastService : IWeatherForecastService
                 Text = x.Day.Condition.Text,
                 Icon = x.Day.Condition.Icon,
                 Uv = x.Day.Uv
-                }).ToList()
+            }).ToList()
         };
 }

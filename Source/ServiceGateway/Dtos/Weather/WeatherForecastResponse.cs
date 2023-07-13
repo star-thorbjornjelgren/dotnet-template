@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ServiceGateway.Weather
+namespace ServiceGateway.Dtos.Weather
 {
     public class WeatherForecastResponse
     {
@@ -84,7 +84,7 @@ namespace ServiceGateway.Weather
             [JsonPropertyName("daily_chance_of_rain")]
             public int DailyChanceOfRain { get; init; }
             public int DailyWillItSnow { get; init; }
-            [JsonPropertyName("daily_chance_of_snow")] 
+            [JsonPropertyName("daily_chance_of_snow")]
             public int DailyChanceOfSnow { get; init; }
             public required Condition Condition { get; init; }
             public double Uv { get; init; }

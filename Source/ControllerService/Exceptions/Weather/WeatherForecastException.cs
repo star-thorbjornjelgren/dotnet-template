@@ -1,4 +1,4 @@
-﻿namespace ControllerService.Weather
+﻿namespace ControllerService.Exceptions.Weather
 {
     public class WeatherForecastException : Exception
     {

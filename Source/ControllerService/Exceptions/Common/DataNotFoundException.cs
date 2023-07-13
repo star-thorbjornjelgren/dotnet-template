@@ -1,4 +1,4 @@
-﻿namespace ControllerService.Exceptions
+﻿namespace ControllerService.Exceptions.Common
 {
     public class DataNotFoundException : Exception
     {

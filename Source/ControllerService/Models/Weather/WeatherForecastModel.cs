@@ -1,4 +1,4 @@
-﻿namespace ControllerService.Weather
+﻿namespace ControllerService.Models.Weather
 {
     public class WeatherForecastModel
     {

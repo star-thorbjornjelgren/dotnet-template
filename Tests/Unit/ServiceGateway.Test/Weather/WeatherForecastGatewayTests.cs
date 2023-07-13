@@ -2,8 +2,8 @@ using AutoFixture;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
-using ServiceGateway.Weather;
-using System;
+using ServiceGateway.Dtos.Weather;
+using ServiceGateway.Gateways.Weather;
 using System.Net;
 using System.Net.Http.Headers;
 

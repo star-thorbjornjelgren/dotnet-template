@@ -1,4 +1,6 @@
-﻿namespace ServiceGateway.Weather;
+﻿using ServiceGateway.Dtos.Weather;
+
+namespace ServiceGateway.Interfaces.Weather;
 
 public interface IWeatherForecastGateway
 {

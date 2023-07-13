@@ -1,4 +1,4 @@
-﻿namespace ServiceGateway.Weather
+﻿namespace ServiceGateway.Dtos.Weather
 {
     public class WeatherForecastRequest
     {

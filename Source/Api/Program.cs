@@ -1,4 +1,5 @@
-using ControllerService.Weather;
+using ControllerService.Interfaces.Weather;
+using ControllerService.Services.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 

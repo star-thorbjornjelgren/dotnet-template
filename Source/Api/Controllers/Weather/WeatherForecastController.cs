@@ -1,5 +1,7 @@
-using ControllerService.Exceptions;
-using ControllerService.Weather;
+using ControllerService.Exceptions.Common;
+using ControllerService.Exceptions.Weather;
+using ControllerService.Interfaces.Weather;
+using ControllerService.Models.Weather;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;

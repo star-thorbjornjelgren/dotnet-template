@@ -1,8 +1,9 @@
 using AutoFixture;
-using ControllerService.Weather;
+using ControllerService.Services.Weather;
 using Moq;
-using ServiceGateway.Weather;
-using static ServiceGateway.Weather.WeatherForecastResponse;
+using ServiceGateway.Dtos.Weather;
+using ServiceGateway.Interfaces.Weather;
+using static ServiceGateway.Dtos.Weather.WeatherForecastResponse;
 
 namespace ControllerService.Test.Weather;
 

@@ -1,6 +1,7 @@
 using Api.Controllers;
 using AutoFixture;
-using ControllerService.Weather;
+using ControllerService.Interfaces.Weather;
+using ControllerService.Models.Weather;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
