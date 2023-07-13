@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControllerService.Test", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceGateway.Test", "Tests\Unit\ServiceGateway.Test\ServiceGateway.Test.csproj", "{C679BF9D-DE1A-457A-BE1B-25C95410A771}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7FDB4A7B-3C5E-4D9C-AB3D-1DAAC90A597C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{224698CA-A05F-4BC8-8883-F53FCD496B44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{7F4040F2-0563-4C48-A2E2-51AA98751484}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +54,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1E12DCB-5104-4D8F-8722-0359971111FD} = {224698CA-A05F-4BC8-8883-F53FCD496B44}
+		{FD34E8BC-F71B-4D73-A982-E28A7A793315} = {224698CA-A05F-4BC8-8883-F53FCD496B44}
+		{C679BF9D-DE1A-457A-BE1B-25C95410A771} = {224698CA-A05F-4BC8-8883-F53FCD496B44}
+		{224698CA-A05F-4BC8-8883-F53FCD496B44} = {7FDB4A7B-3C5E-4D9C-AB3D-1DAAC90A597C}
+		{7F4040F2-0563-4C48-A2E2-51AA98751484} = {7FDB4A7B-3C5E-4D9C-AB3D-1DAAC90A597C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48AE9712-21C2-400F-93D9-3B495045AAE7}

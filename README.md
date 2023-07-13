@@ -34,11 +34,6 @@ Solutionfilen ligger i roden.
 
 **Tests/Unit/ServiceGateway.Tests**: Indeholder testprojektet til ServiceGateway-laget.
 
-```
-OBS!
-Inde i selve projektet, følges mappestrukturen ikke, men alle projekter ligger i samme niveau.
-```
-
 ## Installation og Kørsel
 For at installere og køre DotnetTemplate, skal du følge disse trin:
 
