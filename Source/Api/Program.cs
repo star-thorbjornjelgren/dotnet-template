@@ -25,12 +25,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddSingleton<IWeatherForecastService, WeatherForecastService>();
 
 // Dependency injection for underlying projects
-dynamic weatherSettings = new System.Dynamic.ExpandoObject();
-weatherSettings.Url = builder.Configuration["Weather:Url"];
-weatherSettings.ApiKey = builder.Configuration["Weather:ApiKey"];
-
-ControllerService.Setup.SetupDependencyInjection(builder.Services, weatherSettings);
-
+ControllerService.Infrastructure.DependencyInjection.WeatherDI.Apply(builder.Services, builder.Configuration["Weather:Url"]!, builder.Configuration["Weather:ApiKey"]!);
 
 var app = builder.Build();
 
